@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="StudyMate student task planner app concept and screen flow.">
+  <title>StudyMate — Student Task Planner</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" aria-label="Main navigation">
+      <a class="brand" href="#dashboard" aria-label="StudyMate home"><span class="brand-mark">S</span><span>StudyMate</span></a>
+      <p class="nav-label">WORKSPACE</p>
+      <nav class="nav-links">
+        <a class="nav-link active" href="#dashboard">▦ <span>Dashboard</span></a>
+        <a class="nav-link" href="#tasks">☷ <span>My Tasks</span></a>
+        <a class="nav-link" href="#calendar">▦ <span>Calendar</span></a>
+        <a class="nav-link" href="#profile">⚙ <span>Profile & Settings</span></a>
+      </nav>
+      <div class="sidebar-note"><span class="note-icon">✦</span><strong>Small steps add up.</strong><p>Plan your study time and keep moving forward.</p></div>
+      <p class="sidebar-footer">TASK 1 · APP CONCEPT</p>
+    </aside>
+    <main id="dashboard" class="main-content">
+      <header class="topbar"><div><p class="eyebrow">MONDAY · YOUR STUDY SPACE</p><h1>Good afternoon! <span aria-hidden="true">✦</span></h1><p class="muted">A little progress each day adds up to big results.</p></div><div class="avatar" aria-label="Student profile">S</div></header>
+      <section class="stats" aria-label="Task summary">
+        <article class="stat-card"><span class="stat-label">Tasks today</span><strong id="task-count">4</strong><span class="stat-foot">Keep your momentum</span></article>
+        <article class="stat-card"><span class="stat-label">Completed</span><strong id="done-count">2</strong><span class="stat-foot">Nice work so far</span></article>
+        <article class="stat-card"><span class="stat-label">Upcoming</span><strong>3</strong><span class="stat-foot">Deadlines this week</span></article>
+      </section>
+      <section class="content-grid">
+        <div class="panel task-panel" id="tasks"><div class="panel-heading"><div><p class="eyebrow">YOUR WORKSPACE</p><h2>Today's tasks</h2></div><button class="primary-button" id="open-form">＋ Add task</button></div>
+          <div class="filter-row" role="group" aria-label="Filter tasks"><button class="filter active" data-filter="all">All tasks</button><button class="filter" data-filter="pending">To do</button><button class="filter" data-filter="done">Completed</button></div>
+          <ul class="task-list" id="task-list">
+            <li class="task-item" data-status="pending"><button class="check" aria-label="Mark Mathematics practice complete"></button><div class="task-copy"><strong>Mathematics practice</strong><span>Maths · 30 minutes</span></div><span class="priority high">High</span></li>
+            <li class="task-item" data-status="pending"><button class="check" aria-label="Mark Read DBMS notes complete"></button><div class="task-copy"><strong>Read DBMS notes</strong><span>Computer Science · 20 minutes</span></div><span class="priority medium">Medium</span></li>
+            <li class="task-item done" data-status="done"><button class="check checked" aria-label="Mark HTML revision incomplete" aria-pressed="true">✓</button><div class="task-copy"><strong>HTML revision</strong><span>Web Development · 25 minutes</span></div><span class="priority low">Done</span></li>
+            <li class="task-item done" data-status="done"><button class="check checked" aria-label="Mark Review lecture notes incomplete" aria-pressed="true">✓</button><div class="task-copy"><strong>Review lecture notes</strong><span>Computer Science · 15 minutes</span></div><span class="priority low">Done</span></li>
+          </ul>
+          <p class="empty-state" id="empty-state" hidden>No tasks in this filter yet.</p>
+        </div>
+        <div class="right-column">
+          <section class="panel progress-panel"><p class="eyebrow">WEEKLY OVERVIEW</p><h2>Your progress</h2><div class="progress-number"><strong id="progress-percent">50%</strong><span class="muted">tasks completed</span></div><div class="progress-track" role="progressbar" aria-label="Task completion" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50" id="progress-bar"><span id="progress-fill"></span></div><p class="muted small">Every completed task is a win.</p></section>
+          <section class="panel deadline-panel"><p class="eyebrow">DON'T FORGET</p><h2>Upcoming deadlines</h2><div class="deadline"><span class="date-box"><b>28</b><small>OCT</small></span><div><strong>DBMS assignment</strong><span>Database Systems</span></div></div><div class="deadline"><span class="date-box purple"><b>30</b><small>OCT</small></span><div><strong>Mini project proposal</strong><span>Web Development</span></div></div><a class="text-link" href="#calendar">View calendar →</a></section>
+        </div>
+      </section>
+      <section class="panel calendar-panel" id="calendar"><div class="panel-heading"><div><p class="eyebrow">PLAN AHEAD</p><h2>Calendar preview</h2></div><span class="muted">October 2026</span></div><div class="calendar-grid" aria-label="Sample weekly calendar"><span>MON</span><span>TUE</span><span>WED</span><span>THU</span><span>FRI</span><span>SAT</span><span>SUN</span><b>26</b><b class="calendar-event">27</b><b>28</b><b>29</b><b class="calendar-event">30</b><b>31</b><b>1</b></div><p class="muted small">Highlighted dates have a planned task or deadline.</p></section>
+      <section class="panel profile-panel" id="profile"><p class="eyebrow">YOUR ACCOUNT</p><h2>Profile & settings</h2><label class="setting-row" for="reminders"><span><strong>Study reminders</strong><small>Enable gentle reminders for upcoming tasks.</small></span><input id="reminders" type="checkbox" checked></label><p class="muted small">StudyMate is a concept prototype for Task 1. Sample tasks are not saved to a server.</p></section>
+      <footer>StudyMate · App Concept & Screen Flow · Internship Task 1</footer>
+    </main>
+  </div>
+  <dialog id="task-dialog" aria-labelledby="dialog-title"><form id="task-form"><div class="panel-heading"><h2 id="dialog-title">Add a task</h2><button type="button" class="close-button" id="close-form" aria-label="Close form">×</button></div><label for="new-task">Task title</label><input id="new-task" name="title" required maxlength="80" placeholder="e.g. Revise operating systems"><label for="subject">Subject</label><input id="subject" name="subject" maxlength="60" placeholder="e.g. Computer Science"><label for="priority-select">Priority</label><select id="priority-select" name="priority"><option>Medium</option><option>High</option><option>Low</option></select><div class="dialog-actions"><button type="button" class="secondary-button" id="cancel-form">Cancel</button><button class="primary-button" type="submit">Save task</button></div></form></dialog>
+  <script>
+    const list = document.querySelector('#task-list');
+    const dialog = document.querySelector('#task-dialog');
+    const form = document.querySelector('#task-form');
+    let activeFilter = 'all';
+    function updateStats() {
+      const items = [...list.querySelectorAll('.task-item')];
+      const done = items.filter(item => item.dataset.status === 'done').length;
+      const total = items.length;
+      const percent = total ? Math.round(done / total * 100) : 0;
+      document.querySelector('#task-count').textContent = total;
+      document.querySelector('#done-count').textContent = done;
+      document.querySelector('#progress-percent').textContent = percent + '%';
+      document.querySelector('#progress-fill').style.width = percent + '%';
+      const bar = document.querySelector('#progress-bar');
+      bar.setAttribute('aria-valuenow', percent);
+      applyFilter();
+    }
+    function applyFilter() {
+      let visible = 0;
+      list.querySelectorAll('.task-item').forEach(item => {
+        const show = activeFilter === 'all' || item.dataset.status === activeFilter;
+        item.hidden = !show;
+        if (show) visible++;
+      });
+      document.querySelector('#empty-state').hidden = visible > 0;
+      document.querySelectorAll('.filter').forEach(button => {
+        const selected = button.dataset.filter === activeFilter;
+        button.classList.toggle('active', selected);
+        button.setAttribute('aria-pressed', String(selected));
+      });
+    }
+    document.querySelector('#open-form').addEventListener('click', () => dialog.showModal());
+    document.querySelector('#close-form').addEventListener('click', () => dialog.close());
+    document.querySelector('#cancel-form').addEventListener('click', () => dialog.close());
+    document.querySelectorAll('.filter').forEach(button => button.addEventListener('click', () => { activeFilter = button.dataset.filter; applyFilter(); }));
+    list.addEventListener('click', event => {
+      const button = event.target.closest('.check');
+      if (!button) return;
+      const item = button.closest('.task-item');
+      const done = item.dataset.status !== 'done';
+      item.dataset.status = done ? 'done' : 'pending';
+      item.classList.toggle('done', done);
+      button.classList.toggle('checked', done);
+      button.textContent = done ? '✓' : '';
+      button.setAttribute('aria-pressed', String(done));
+      button.setAttribute('aria-label', `${done ? 'Mark' : 'Mark'} ${item.querySelector('strong').textContent} ${done ? 'incomplete' : 'complete'}`);
+      const badge = item.querySelector('.priority');
+      if (done) { badge.textContent = 'Done'; badge.className = 'priority low'; }
+      else { badge.textContent = item.dataset.priority || 'Medium'; badge.className = 'priority ' + (item.dataset.priority === 'High' ? 'high' : item.dataset.priority === 'Low' ? 'low' : 'medium'); }
+      updateStats();
+    });
+    form.addEventListener('submit', event => {
+      event.preventDefault();
+      const data = new FormData(form);
+      const title = String(data.get('title')).trim();
+      if (!title) return;
+      const subject = String(data.get('subject')).trim() || 'Personal study';
+      const priority = String(data.get('priority'));
+      const item = document.createElement('li');
+      item.className = 'task-item'; item.dataset.status = 'pending'; item.dataset.priority = priority;
+      const check = document.createElement('button'); check.className = 'check'; check.type = 'button'; check.setAttribute('aria-label', `Mark ${title} complete`);
+      const copy = document.createElement('div'); copy.className = 'task-copy';
+      const strong = document.createElement('strong'); strong.textContent = title;
+      const span = document.createElement('span'); span.textContent = subject;
+      copy.append(strong, span);
+      const badge = document.createElement('span'); badge.className = 'priority ' + priority.toLowerCase(); badge.textContent = priority;
+      item.append(check, copy, badge); list.prepend(item);
+      form.reset(); dialog.close(); activeFilter = 'all'; updateStats();
+    });
+    updateStats();
+  </script>
+</body>
+</html>
