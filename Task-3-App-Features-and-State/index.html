@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#6657df"><meta name="description" content="StudyMate Task 3: validated task creation, filtering, empty states, and browser-persistent state.">
+<title>StudyMate — Tasks & State</title><link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="topbar"><a class="brand" href="#" aria-label="StudyMate home"><span class="logo">S</span><span>StudyMate<small>STUDENT PLANNER</small></span></a><span class="task-label">TASK 3 · APP FEATURES & STATE</span></header>
+<main class="shell">
+<section class="intro"><div><p class="eyebrow">YOUR PERSONAL STUDY SPACE</p><h1>Make a plan.<br><span>Make progress.</span></h1><p class="intro-copy">Keep your next steps clear. Add a task, choose a priority, and check it off when you're done.</p></div><div class="hero-art" aria-hidden="true"><span class="art-circle"></span><span class="art-check">✓</span><span class="art-star">✦</span><span class="art-line line-one"></span><span class="art-line line-two"></span></div></section>
+<section class="summary-grid" aria-label="Task summary"><article class="summary-card"><span class="summary-icon purple">☷</span><div><span class="summary-label">All tasks</span><strong id="total-count">0</strong></div></article><article class="summary-card"><span class="summary-icon green">✓</span><div><span class="summary-label">Completed</span><strong id="completed-count">0</strong></div></article><article class="summary-card"><span class="summary-icon orange">◷</span><div><span class="summary-label">To do</span><strong id="pending-count">0</strong></div></article></section>
+<div class="content-grid">
+<section class="panel create-panel" aria-labelledby="create-heading"><div class="section-heading"><div><p class="eyebrow">START SMALL</p><h2 id="create-heading">Add a task</h2></div><span class="heading-sparkle">✦</span></div>
+<form id="task-form" novalidate>
+<div class="field"><label for="task-title">Task title <span class="required">*</span></label><input id="task-title" name="title" maxlength="80" placeholder="e.g. Revise DBMS notes" autocomplete="off" aria-describedby="title-error" required><p class="field-error" id="title-error" role="alert"></p></div>
+<div class="field"><label for="task-subject">Subject <span class="optional">(optional)</span></label><input id="task-subject" name="subject" maxlength="40" placeholder="e.g. Computer Science"></div>
+<div class="field-row"><div class="field"><label for="task-date">Due date</label><input id="task-date" name="dueDate" type="date"></div><div class="field"><label for="task-priority">Priority</label><select id="task-priority" name="priority"><option value="Medium">Medium</option><option value="High">High</option><option value="Low">Low</option></select></div></div>
+<div class="field"><label for="task-notes">Notes <span class="optional">(optional)</span></label><textarea id="task-notes" name="notes" rows="2" maxlength="180" placeholder="Anything you want to remember?"></textarea><div class="field-hint"><span>Keep it short and clear.</span><span id="notes-count">0/180</span></div></div>
+<button class="primary-btn submit-btn" type="submit"><span>＋</span> Add task</button><p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+</form><p class="privacy-note"><span>▣</span> Your tasks stay in this browser on this device.</p></section>
+<section class="panel list-panel" aria-labelledby="list-heading"><div class="list-heading"><div><p class="eyebrow">YOUR CHECKLIST</p><h2 id="list-heading">My tasks <span class="count-pill" id="list-count">0</span></h2></div><button class="clear-btn" id="clear-completed" type="button" disabled>Clear completed</button></div>
+<div class="toolbar"><label class="search"><span aria-hidden="true">⌕</span><input id="search" type="search" placeholder="Search tasks..." aria-label="Search tasks"></label><select id="filter" aria-label="Filter tasks"><option value="all">All tasks</option><option value="pending">To do</option><option value="completed">Completed</option></select></div>
+<div class="filter-pills" role="group" aria-label="Quick task filters"><button type="button" class="pill active" data-filter="all">All <span id="pill-all">0</span></button><button type="button" class="pill" data-filter="pending">To do <span id="pill-pending">0</span></button><button type="button" class="pill" data-filter="completed">Completed <span id="pill-completed">0</span></button></div>
+<div id="task-list" class="task-list" aria-live="polite"></div>
+<div class="empty-state" id="empty-state"><div class="empty-illustration" aria-hidden="true"><span>☷</span><i>✦</i></div><h3 id="empty-title">Your list is a blank page.</h3><p id="empty-copy">Add your first task using the form to start making progress.</p><button type="button" id="empty-add" class="secondary-btn">＋ Create your first task</button></div>
+<div class="list-footer"><span id="footer-message">Ready when you are.</span><span><i class="dot"></i> Saved locally</span></div></section>
+</div>
+<footer class="footer"><span>StudyMate · Task 3</span><span>Built with HTML, CSS & JavaScript</span></footer>
+</main><div id="toast" class="toast" role="status" aria-live="polite"></div>
+<script src="app.js"></script>
+</body></html>
